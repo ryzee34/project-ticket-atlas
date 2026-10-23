@@ -51,3 +51,93 @@ button {
   position: fixed;
   inset: 0;
 }
+
+.intro {
+  position: fixed;
+  z-index: 2;
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.intro {
+  top: var(--gutter);
+  left: var(--gutter);
+  width: 340px;
+  padding: 18px 20px 20px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.intro h1 {
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.intro h1 [data-total] {
+  display: block;
+  font-size: 52px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.lede {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.loading {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  background: var(--page);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.maplibregl-ctrl-top-right {
+  top: calc(var(--gutter) - 10px);
+  right: calc(var(--gutter) - 10px);
+}
+
+.maplibregl-ctrl-group {
+  background: var(--surface) !important;
+  border: 1px solid var(--border);
+  box-shadow: none !important;
+}
+
+.maplibregl-ctrl-group button + button {
+  border-top-color: var(--hairline) !important;
+}
+
+.maplibregl-ctrl-group .maplibregl-ctrl-icon {
+  filter: invert(0.85);
+}
+
+.maplibregl-ctrl-attrib {
+  background: rgba(13, 13, 13, 0.7) !important;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.maplibregl-ctrl-attrib a {
+  color: var(--ink-2);
+}
+
+.maplibregl-ctrl-attrib-button {
+  filter: invert(0.85);
+}

@@ -12,7 +12,10 @@
     "build-data": "tsx pipeline/build.ts"
   },
   "dependencies": {
-    "h3-js": "^4.5.0"
+    "@deck.gl/maplibre": "^9.4.0",
+    "deck.gl": "^9.4.0",
+    "h3-js": "^4.5.0",
+    "maplibre-gl": "^6.15.0"
   },
   "devDependencies": {
     "@types/node": "^22.20.5",

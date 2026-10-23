@@ -10,6 +10,14 @@
   <body>
     <div id="map" aria-label="Map of Los Angeles parking tickets"></div>
 
+    <header class="intro">
+      <p class="eyebrow">Ticket Atlas LA</p>
+      <h1><span data-total>3.9M</span> parking tickets</h1>
+      <p class="lede">Every ticket Los Angeles wrote from <span data-range>October 2024 to September 2026</span>, <span data-fines>$341M</span> in fines. The taller and brighter the hexagon, the more tickets it gets.</p>
+    </header>
+
+    <div class="loading" data-loading role="status">Loading tickets</div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
