@@ -36,3 +36,11 @@ export function perWeek(atlas: Atlas, cell: Cell, slot: number | null) {
   if (slot === null) return cell.tickets / weeksIn(atlas)
   return (cell.week[slot] ?? 0) / (atlas.range.weekdays[Math.floor(slot / 24)] ?? 1)
 }
+
+export function worstSlots(atlas: Atlas, cell: Cell, count: number) {
+  return cell.week
+    .map((_, slot) => ({ slot, rate: perWeek(atlas, cell, slot) }))
+    .sort((a, b) => b.rate - a.rate)
+    .slice(0, count)
+    .filter(s => s.rate > 0)
+}
