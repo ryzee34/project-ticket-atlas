@@ -91,9 +91,10 @@ export function createMap(container: HTMLElement, cells: Cell[], handlers: Handl
       overlay.setProps({ layers: [layer()] })
     },
     focus(cell) {
-      if (!cell || narrow) return
+      if (!cell) return
       const [lat, lng] = cellToLatLng(cell.id)
-      map.easeTo({ center: [lng, lat], zoom: Math.max(map.getZoom(), 11.2), duration: 900, offset: [-170, 40] })
+      const offset: [number, number] = narrow ? [0, -window.innerHeight * 0.3] : [-170, 40]
+      map.easeTo({ center: [lng, lat], zoom: Math.max(map.getZoom(), narrow ? 10.4 : 11.2), duration: 900, offset })
     },
   }
 }
