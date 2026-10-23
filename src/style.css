@@ -465,6 +465,10 @@ input[type='range']::-moz-range-thumb {
   font-weight: 600;
 }
 
+.tip-street {
+  color: var(--muted);
+}
+
 .loading {
   position: fixed;
   inset: 0;

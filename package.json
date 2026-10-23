@@ -8,7 +8,7 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "fetch-data": "tsx pipeline/fetch.ts",
+    "fetch-data": "tsx pipeline/fetch.ts && tsx pipeline/fetch-streets.ts",
     "build-data": "tsx pipeline/build.ts"
   },
   "dependencies": {

@@ -1,12 +1,13 @@
-import { createReadStream } from 'node:fs'
+import { createReadStream, existsSync } from 'node:fs'
 import { mkdir, writeFile } from 'node:fs/promises'
 import { dirname } from 'node:path'
 import { parse } from 'csv-parse'
 import { latLngToCell } from 'h3-js'
 import { CATEGORIES, categoryOf } from './categories'
-import { BOUNDS, FIRST_DAY, LAST_DAY, MONTHS, OUT_FILE, RAW_FILE, RESOLUTION } from './window'
+import { streetOf } from './streets'
+import { BOUNDS, FIRST_DAY, LAST_DAY, MONTHS, OUT_FILE, RAW_FILE, RESOLUTION, STREETS_FILE } from './window'
 
-type Cell = { n: number; fines: number; week: number[]; types: Map<number, [number, number]> }
+type Cell = { n: number; fines: number; week: number[]; types: Map<number, [number, number]>; streets: Map<string, number> }
 
 const cells = new Map<string, Cell>()
 const seen = new Set<string>()
@@ -24,7 +25,7 @@ function inBounds(lat: number, lon: number) {
 function cellFor(id: string) {
   let cell = cells.get(id)
   if (!cell) {
-    cell = { n: 0, fines: 0, week: new Array<number>(168).fill(0), types: new Map() }
+    cell = { n: 0, fines: 0, week: new Array<number>(168).fill(0), types: new Map(), streets: new Map() }
     cells.set(id, cell)
   }
   return cell
@@ -78,6 +79,19 @@ for await (const row of parser as AsyncIterable<Record<string, string>>) {
   fines += fine
 }
 
+if (existsSync(STREETS_FILE)) {
+  const streets = createReadStream(STREETS_FILE).pipe(parse({ columns: true }))
+  for await (const row of streets as AsyncIterable<Record<string, string>>) {
+    const lat = Number(row.lat)
+    const lon = Number(row.lon)
+    const street = streetOf(row.location ?? '')
+    if (!street || !inBounds(lat, lon)) continue
+    const cell = cells.get(latLngToCell(lat, lon, RESOLUTION))
+    if (!cell) continue
+    cell.streets.set(street, (cell.streets.get(street) ?? 0) + Number(row.n))
+  }
+}
+
 const out = {
   range: { first: FIRST_DAY, last: LAST_DAY, months: MONTHS, weekdays: weekdayCounts() },
   totals: { tickets, fines: Math.round(fines) },
@@ -93,6 +107,7 @@ const out = {
       Math.round(c.fines),
       c.week,
       [...c.types.entries()].sort((a, b) => b[1][0] - a[1][0]).map(([type, [n, f]]) => [type, n, Math.round(f)]),
+      [...c.streets.entries()].sort((a, b) => b[1] - a[1]).slice(0, 3).map(([s]) => s),
     ]),
 }
 

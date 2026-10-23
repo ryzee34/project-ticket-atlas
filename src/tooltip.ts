@@ -19,7 +19,10 @@ export function createTooltip(atlas: Atlas) {
       value.textContent = `${rate(perWeek(atlas, cell, slot))} a week`
       label.textContent = `${dayName(slot, true)} ${hourRange(slot)}`
     }
-    tip.replaceChildren(value, label)
+    const street = document.createElement('span')
+    street.className = 'tip-street'
+    street.textContent = cell.streets[0] ?? ''
+    tip.replaceChildren(value, label, street)
     tip.style.transform = `translate(${Math.round(x + 14)}px, ${Math.round(y + 14)}px)`
     tip.hidden = false
   }
