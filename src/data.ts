@@ -1,6 +1,6 @@
 export type TypeShare = [type: number, tickets: number, fines: number]
 
-export type RawCell = [id: string, tickets: number, fines: number, week: number[], types: TypeShare[]]
+export type RawCell = [id: string, tickets: number, fines: number, week: number[], types: TypeShare[], streets: string[]]
 
 export type Atlas = {
   range: { first: string; last: string; months: number; weekdays: number[] }
@@ -18,13 +18,14 @@ export type Cell = {
   fines: number
   week: number[]
   types: TypeShare[]
+  streets: string[]
 }
 
 export async function loadAtlas() {
   const res = await fetch(`${import.meta.env.BASE_URL}data/atlas.json`)
   if (!res.ok) throw new Error(`atlas.json failed with ${res.status}`)
   const atlas = (await res.json()) as Atlas
-  const cells: Cell[] = atlas.cells.map(([id, tickets, fines, week, types]) => ({ id, tickets, fines, week, types }))
+  const cells: Cell[] = atlas.cells.map(([id, tickets, fines, week, types, streets]) => ({ id, tickets, fines, week, types, streets }))
   return { atlas, cells }
 }
 

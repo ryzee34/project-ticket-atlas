@@ -1,6 +1,5 @@
 import type { Atlas, Cell } from './data'
 import { perWeek, worstSlots } from './data'
-import { cellToLatLng } from 'h3-js'
 import { renderHeatmap } from './heatmap'
 import { dayName, hourRange, money, rate, whole, monthYear } from './format'
 
@@ -66,8 +65,7 @@ export function createPanel(atlas: Atlas, onClose: () => void) {
 
   return {
     show(cell: Cell) {
-      const [lat, lng] = cellToLatLng(cell.id)
-      title.textContent = `Near ${lat.toFixed(3)}, ${lng.toFixed(3)}`
+      title.textContent = cell.streets.length ? `Around ${cell.streets.slice(0, 2).join(' and ')}` : 'A quiet corner'
       sub.textContent = `About ${HEX_KM2} km² · ${monthYear(atlas.range.first)} to ${monthYear(atlas.range.last)}`
       tickets.textContent = whole(cell.tickets)
       fines.textContent = money(cell.fines)
