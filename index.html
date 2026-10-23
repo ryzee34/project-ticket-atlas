@@ -13,7 +13,7 @@
     <header class="intro">
       <p class="eyebrow">Ticket Atlas LA</p>
       <h1><span data-total>3.9M</span> parking tickets</h1>
-      <p class="lede">Every ticket Los Angeles wrote from <span data-range>October 2024 to September 2026</span>, <span data-fines>$341M</span> in fines. Drag the clock to watch a week go by.</p>
+      <p class="lede">Every ticket Los Angeles wrote from <span data-range>October 2024 to September 2026</span>, <span data-fines>$341M</span> in fines. Drag the clock to watch a week go by, or click a hexagon.</p>
     </header>
 
     <section class="clock" aria-label="Hour of the week">
@@ -33,6 +33,27 @@
         <span class="legend-scale"><span>0</span><span class="legend-bar" aria-hidden="true"></span><span data-legend-max></span></span>
       </div>
     </section>
+
+    <aside class="panel" data-panel hidden aria-live="polite">
+      <button type="button" class="close" data-close aria-label="Close">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" /></svg>
+      </button>
+      <p class="eyebrow">This hexagon</p>
+      <h2 data-panel-title></h2>
+      <p class="panel-sub" data-panel-sub></p>
+      <div class="tiles">
+        <div class="tile"><p class="tile-label">Tickets</p><p class="tile-value" data-panel-tickets></p></div>
+        <div class="tile"><p class="tile-label">Fines</p><p class="tile-value" data-panel-fines></p></div>
+      </div>
+      <h3>Worst hours</h3>
+      <ol class="worst" data-panel-worst></ol>
+      <h3>Across the week</h3>
+      <div class="heatmap" data-panel-heatmap></div>
+      <h3>Ticket types</h3>
+      <ul class="types" data-panel-types></ul>
+    </aside>
+
+    <div class="tip" data-tip hidden></div>
 
     <div class="loading" data-loading role="status">Loading tickets</div>
 
