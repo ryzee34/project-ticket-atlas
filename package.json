@@ -8,10 +8,15 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "fetch-data": "tsx pipeline/fetch.ts"
+    "fetch-data": "tsx pipeline/fetch.ts",
+    "build-data": "tsx pipeline/build.ts"
+  },
+  "dependencies": {
+    "h3-js": "^4.5.0"
   },
   "devDependencies": {
     "@types/node": "^22.20.5",
+    "csv-parse": "^7.0.3",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2",
     "vite": "^8.3.5"
