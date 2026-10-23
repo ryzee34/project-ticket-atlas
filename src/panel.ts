@@ -71,8 +71,8 @@ export function createPanel(atlas: Atlas, onClose: () => void) {
       fines.textContent = money(cell.fines)
       renderWorst(cell)
       const rates = cell.week.map((_, slot) => perWeek(atlas, cell, slot))
-      caption.textContent = 'Hover a square for that hour'
-      renderHeatmap(heatmap, rates, text => (caption.textContent = text ?? 'Hover a square for that hour'))
+      caption.textContent = 'Hover or tap a square for that hour'
+      renderHeatmap(heatmap, rates, text => (caption.textContent = text ?? 'Hover or tap a square for that hour'))
       heatmap.append(caption)
       renderTypes(cell)
       panel.hidden = false

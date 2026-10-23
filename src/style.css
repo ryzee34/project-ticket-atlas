@@ -516,3 +516,60 @@ input[type='range']::-moz-range-thumb {
 .maplibregl-ctrl-attrib-button {
   filter: invert(0.85);
 }
+
+@media (max-width: 720px) {
+  :root {
+    --gutter: 16px;
+  }
+
+  .intro {
+    top: 12px;
+    left: var(--gutter);
+    right: var(--gutter);
+    width: auto;
+    padding: 14px 16px 16px;
+  }
+
+  .intro h1 {
+    font-size: 17px;
+  }
+
+  .intro h1 [data-total] {
+    font-size: 48px;
+  }
+
+  .lede {
+    font-size: 13px;
+  }
+
+  .clock {
+    bottom: 12px;
+    padding: 12px 14px 10px;
+  }
+
+  .legend-bar {
+    width: 90px;
+  }
+
+  .maplibregl-ctrl-top-right {
+    display: none;
+  }
+
+  .panel {
+    top: auto;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    width: auto;
+    max-height: 64vh;
+    padding: 18px 16px;
+  }
+
+  .panel-open .clock {
+    display: none;
+  }
+
+  .panel-open .intro {
+    display: none;
+  }
+}
