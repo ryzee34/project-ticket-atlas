@@ -10,3 +10,7 @@ export function rampColor(t: number): [number, number, number] {
   const b = RGB[i + 1]!
   return [0, 1, 2].map(k => Math.round(a[k]! + (b[k]! - a[k]!) * f)) as [number, number, number]
 }
+
+export function rampGradient() {
+  return `linear-gradient(90deg, ${RAMP.join(', ')})`
+}

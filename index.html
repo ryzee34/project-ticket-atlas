@@ -13,8 +13,26 @@
     <header class="intro">
       <p class="eyebrow">Ticket Atlas LA</p>
       <h1><span data-total>3.9M</span> parking tickets</h1>
-      <p class="lede">Every ticket Los Angeles wrote from <span data-range>October 2024 to September 2026</span>, <span data-fines>$341M</span> in fines. The taller and brighter the hexagon, the more tickets it gets.</p>
+      <p class="lede">Every ticket Los Angeles wrote from <span data-range>October 2024 to September 2026</span>, <span data-fines>$341M</span> in fines. Drag the clock to watch a week go by.</p>
     </header>
+
+    <section class="clock" aria-label="Hour of the week">
+      <div class="clock-top">
+        <button type="button" class="play" data-play aria-label="Play the week">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path class="icon-play" d="M4 2.5v11l9-5.5z" /><path class="icon-pause" d="M3.5 2.5h3v11h-3zM9.5 2.5h3v11h-3z" /></svg>
+        </button>
+        <p class="now" aria-live="polite"><strong data-now-day>Tuesday</strong> <span data-now-hour>8 to 9 AM</span></p>
+        <button type="button" class="all-week" data-all-week aria-pressed="false">All week</button>
+      </div>
+      <input type="range" min="0" max="167" step="1" value="32" data-slot aria-label="Hour of the week" />
+      <div class="days" aria-hidden="true">
+        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+      </div>
+      <div class="legend">
+        <span class="legend-label" data-legend-label>Tickets a week in this hour</span>
+        <span class="legend-scale"><span>0</span><span class="legend-bar" aria-hidden="true"></span><span data-legend-max></span></span>
+      </div>
+    </section>
 
     <div class="loading" data-loading role="status">Loading tickets</div>
 
