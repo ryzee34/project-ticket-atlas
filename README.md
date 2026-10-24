@@ -2,7 +2,7 @@
 
 every parking ticket los angeles wrote from october 2024 to september 2026, about 3.9 million of them, on a 3d hex map of the city. drag the clock to watch a week go by, or click a hexagon to see its worst hours, fines and ticket types.
 
-built with typescript, vite, deck.gl and maplibre. live at https://ryzee34.github.io/ticket-atlas-la/
+built with typescript, vite, deck.gl and maplibre. live at https://ryzee34.github.io/project-ticket-atlas/
 
 ## running it
 
